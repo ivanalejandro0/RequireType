@@ -14,9 +14,10 @@ In case of that a call don't match the required type will fail with a
 Why?
 ----
 
-There are some cases (TODO: add some examples) where you want/need to specify a
-specific type to use and since python does not have type checks for parameters
-here's where this is useful.
+For most cases I'd recommend using tests instead of type checking since it's
+more natural to do that in Python. But, there are some cases where you
+want/need to specify a specific type to use and since python does not have type
+checks for parameters here's where this is useful.
 
 All the existing solutions that I've found had some problem or does not have a
 feature that I'd like to have, so I've made my own.
@@ -25,13 +26,17 @@ feature that I'd like to have, so I've made my own.
 How to use?
 -----------
 
-First, install the ``RequireType`` package, you can do that using ``pip``::
+First, install the ``RequireType`` package, you can do that using ``pip``.
 
-    pip install requiretype
+.. code:: bash
+
+    $ pip install requiretype
 
 In your code you just need to import and use the ``require`` decorator.
 
-Example::
+Example:
+
+.. code:: python
 
     from requiretype import require
 
@@ -43,12 +48,12 @@ Example::
     Hello John (42)
 
     >>> greet_person("John", "Doe")
-    [...traceback...]
+    # [...traceback...]
     TypeError: Doe is not a valid type.
     Valid types: <type 'int'>, <type 'float'>, <type 'long'>
 
     >>> greet_person(42, 43)
-    [...traceback...]
+    # [...traceback...]
     TypeError: 42 is not a <type 'str'> type
 
 
