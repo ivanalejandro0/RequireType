@@ -42,7 +42,7 @@ def check_type(arg, valid):
     :type valid: type or tuple(type, type, ...)
     """
     if isinstance(valid, tuple):
-        if sum(isinstance(arg, type_) for type_ in valid) == 0:
+        if not any(isinstance(arg, type_) for type_ in valid):
             msg = "{0} is not a valid type.\nValid types: {1}"
             msg = msg.format(arg, ', '.join(str(x) for x in valid))
             raise TypeError(msg)
