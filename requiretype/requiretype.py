@@ -43,12 +43,12 @@ def check_type(arg, valid):
     """
     if isinstance(valid, tuple):
         if not any(isinstance(arg, type_) for type_ in valid):
-            msg = "{0} is not a valid type.\nValid types: {1}"
+            msg = "{0!r} is not a valid type.\nValid types: {1}"
             msg = msg.format(arg, ', '.join(str(x) for x in valid))
             raise TypeError(msg)
 
     if not isinstance(arg, valid):
-        raise TypeError('%s is not a %s type' % (arg, valid))
+        raise TypeError('%r is not a %s type' % (arg, valid))
 
 
 @decorator_with_args
